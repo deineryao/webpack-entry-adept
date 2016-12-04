@@ -44,11 +44,7 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	module.exports = {
-	    sayHello: function() {
-	        alert('Hello niemi!');
-	    }
-	}
+	alert('非模块打包');
 
 /***/ }
 /******/ ]);

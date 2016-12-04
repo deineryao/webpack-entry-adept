@@ -13,14 +13,26 @@ module.exports = {
     path: BUILD_PATH,
     filename: 'bundle.js'
   },
-  
+  //sass处理
   module: {
     loaders: [
-      //css处理
       {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
         include: APP_PATH
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=40000'
+      },
+      //es6处理
+      {
+        test: /\.jsx?$/,
+        loader: 'babel',
+        include: APP_PATH,
+        query: {
+          presets: ['es2015']
+        }
       }
     ]
   },

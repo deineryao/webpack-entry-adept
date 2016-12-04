@@ -1,4 +1,2 @@
-define([
-],function(){
-    alert('hello world!');
-});
+var me = require('./hello');
+me.sayHello();

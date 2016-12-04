@@ -13,14 +13,19 @@ module.exports = {
     path: BUILD_PATH,
     filename: 'bundle.js'
   },
-  
+  //sass处理
   module: {
     loaders: [
-      //css处理
+      //sass处理
       {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
         include: APP_PATH
+      },
+      //图片处理
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url-loader?limit=40000'
       }
     ]
   },

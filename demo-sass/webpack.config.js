@@ -13,15 +13,15 @@ module.exports = {
     path: BUILD_PATH,
     filename: 'bundle.js'
   },
-  
+  //sass处理
   module: {
     loaders: [
-      //css处理
+      //sass处理
       {
-        test: /\.css$/,
-        loaders: ['style', 'css'],
+        test: /\.scss$/,
+        loaders: ['style', 'css', 'sass'],
         include: APP_PATH
-      }
+      },
     ]
   },
   //添加我们的插件 会自动生成一个html文件
