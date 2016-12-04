@@ -1,1 +1,4 @@
-alert(1);
+define([
+],function(){
+    alert('hello world!');
+});
