@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>异步测试</title>
+    <script>
+
+      (function() {
+        var queue = [],paused = false, results;
+        this.test = function(name, fn) {
+            queue.push(function() {
+                results = document.getElementById("results");
+                
+            })
+        }
+        this.pause = function() {
+            paused = true;
+        };
+        this.resume = function() {
+            paused = false;
+            setTimeout(runTest, 1);
+        };
+        function runTest() {
+            if (!paused && queue.length) {
+                queue.shift()();
+            }
+        }
+        this.assert = function assert(value, desc) {
+
+        }
+      })();
+
+      window.onload = function() {
+        test("A test.", function() {
+          assert(true, "First assertion completed");
+          assert(true, "Second assertion completed");
+          assert(true, "Third assertion completed");
+        });
+        test("Another test.", function() {
+          assert(true, "First test completed");
+          assert(false, "Second test failed");
+          assert(true, "Third assertion completed");
+        });
+        test("A third test.", function() {
+          assert(null, "fail");
+          assert(5, "pass")
+        });
+      };
+    </script>
+    <style>
+      #results li.pass { color: green; }
+      #results li.fail { color: red; }
+    </style>
+  </head>
+  <body>
+    <ul id="results"></ul>
+  </body>
+</html>
