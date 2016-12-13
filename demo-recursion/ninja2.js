@@ -1,10 +1,10 @@
 var ninja = {
 	chirp: function(n) {
-		return n>1 ? ninja.chirp(n-1) + "-chirp" : "chirp";
+		return n>1 ? this.chirp(n-1) + "-chirp" : "chirp";
 	}
 };
 var samurai = {chirp: ninja.chirp};
-//断开引用
+//方法内用this,不介意断开引用
 ninja = {};
 
 try{
