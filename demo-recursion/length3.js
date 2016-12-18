@@ -1,3 +1,4 @@
+//内部匿名函数如何访问到old和fn，需深入理解闭包
 function addMethod(object, name ,fn) {
     var old = object[name];
     object[name] = function() {
