@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<button id="test">click me</button>
+本示例中click函数的上下文，不是我们所期待的button对象。<br/>
+浏览器的事件处理系统认为函数调用的上下文是事件的目标元素，所以才导致其上下文是<button>元素，<br>
+而不是button对象。
+<script>
+    var button = {
+        clicked: false,
+        click: function(){
+            this.clicked = true;
+            console.log(this);
+            console.log(button.clicked);
+        }
+    }
+    var elem = document.getElementById("test");
+    elem.addEventListener("click",button.click,false);
+</script>
+</body>
+</html>

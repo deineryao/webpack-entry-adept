@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<button id="test">click me</button>
+利用apply()和闭包，强制让特定的函数在调用时都使用特定所需的上下文。
+<script>
+
+    function bind(context,name){
+        return function(){
+            return context[name].apply(context,arguments);
+        }
+    }
+
+    var button = {
+        clicked: false,
+        click: function(){
+            this.clicked = true;
+            console.log(this);
+            console.log(button.clicked);
+        }
+    }
+
+    var elem = document.getElementById("test");
+    elem.addEventListener("click",bind(button,"click"),false);
+</script>
+</body>
+</html>
